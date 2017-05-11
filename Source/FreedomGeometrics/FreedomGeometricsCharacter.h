@@ -23,7 +23,7 @@ public:
 
 	float MinSpinSpeed = 1;
 	float MaxSpinSpeed = 10;
-	float SpinAcceleration = 0.05;
+	float SpinAcceleration = 0.025;
 	float CurrentSpinSpeed = MinSpinSpeed;
 
 	UFUNCTION(BlueprintPure, Category = "C++ Functions")
