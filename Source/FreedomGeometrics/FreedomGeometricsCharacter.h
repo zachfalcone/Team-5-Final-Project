@@ -19,6 +19,30 @@ class AFreedomGeometricsCharacter : public ACharacter
 public:
 	AFreedomGeometricsCharacter();
 
+	virtual void Tick(float DeltaTime) override;
+
+	float MinSpinSpeed = 1;
+	float MaxSpinSpeed = 10;
+	float SpinAcceleration = 0.05;
+	float CurrentSpinSpeed = MinSpinSpeed;
+
+	UFUNCTION(BlueprintPure, Category = "C++ Functions")
+	float GetCurrentSpinSpeed();
+
+	void UpdateSpinSpeed();
+
+	void Fire();
+	void BeginFire();
+	void EndFire();
+
+	bool IsFiring = false;
+	float FireDelaySeconds = 0.15;
+	float TimeSinceLastShotFired = 0;
+
+	/** Sound to play each time we fire */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	class USoundBase* FireSound;
+
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	float BaseTurnRate;
@@ -30,42 +54,22 @@ public:
 
 protected:
 
-	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
-	/** Called for forwards/backward input */
 	void MoveForward(float Value);
-
-	/** Called for side to side input */
 	void MoveRight(float Value);
 
-	/**
-	* Called via input to turn at a given rate.
-	* @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
-	*/
 	void TurnAtRate(float Rate);
-
-	/**
-	* Called via input to turn look up/down at a given rate.
-	* @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
-	*/
 	void LookUpAtRate(float Rate);
 
-	/** Handler for when a touch input begins. */
 	void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
-
-	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
 protected:
-	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	// End of APawn interface
 
 public:
-	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
 

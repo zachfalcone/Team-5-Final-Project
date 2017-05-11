@@ -8,6 +8,8 @@
 
 AFreedomGeometricsCharacter::AFreedomGeometricsCharacter()
 {
+	PrimaryActorTick.bCanEverTick = true;
+
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -25,6 +27,7 @@ AFreedomGeometricsCharacter::AFreedomGeometricsCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 0.f, 0.f); // ...at this rotation rate
 	GetCharacterMovement()->JumpZVelocity = 600.f;
 	GetCharacterMovement()->AirControl = 0.2f;
+
 
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
@@ -50,6 +53,9 @@ void AFreedomGeometricsCharacter::SetupPlayerInputComponent(class UInputComponen
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFreedomGeometricsCharacter::BeginFire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &AFreedomGeometricsCharacter::EndFire);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFreedomGeometricsCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFreedomGeometricsCharacter::MoveRight);
@@ -125,4 +131,63 @@ void AFreedomGeometricsCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+}
+
+void AFreedomGeometricsCharacter::BeginFire()
+{
+	IsFiring = true;
+}
+
+void AFreedomGeometricsCharacter::EndFire()
+{
+	IsFiring = false;
+}
+
+void AFreedomGeometricsCharacter::Fire()
+{
+	TimeSinceLastShotFired = 0;
+
+	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
+
+	FHitResult HitResult;
+	FVector StartTrace = GetActorLocation();
+	FVector CameraLook = FollowCamera->GetForwardVector();
+	CameraLook.Z = 0;
+	FVector EndTrace = (CameraLook * 2000.f) + StartTrace;
+	
+	DrawDebugLine(GetWorld(), StartTrace, EndTrace, FColor::Red, false, 2, 0, 2);
+
+	//FCollisionQueryParams QueryParams;
+	//QueryParams.AddIgnoredActor(this);
+
+	// look for actors hit by trace
+}
+
+void AFreedomGeometricsCharacter::UpdateSpinSpeed()
+{	
+	if (IsFiring) CurrentSpinSpeed += SpinAcceleration;
+	else CurrentSpinSpeed -= SpinAcceleration;
+
+	if (CurrentSpinSpeed > MaxSpinSpeed) CurrentSpinSpeed = MaxSpinSpeed;
+	if (CurrentSpinSpeed < MinSpinSpeed) CurrentSpinSpeed = MinSpinSpeed;
+}
+
+float AFreedomGeometricsCharacter::GetCurrentSpinSpeed()
+{
+	return CurrentSpinSpeed;
+}
+
+void AFreedomGeometricsCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	TimeSinceLastShotFired += DeltaTime;
+
+	if (IsFiring && TimeSinceLastShotFired >= FireDelaySeconds)
+	{
+		Fire();
+	}
+
+	UpdateSpinSpeed();
 }

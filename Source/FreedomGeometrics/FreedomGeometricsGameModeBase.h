@@ -5,15 +5,18 @@
 #include "GameFramework/GameModeBase.h"
 #include "FreedomGeometricsGameModeBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class FREEDOMGEOMETRICS_API AFreedomGeometricsGameModeBase : public AGameModeBase
+class AFreedomGeometricsGameModeBase : public AGameMode
 {
 	GENERATED_BODY()
 	
 	
-	
+public:
+	AFreedomGeometricsGameModeBase();
+
+	virtual void Tick(float DeltaTime) override;
+	virtual void BeginPlay() override;
+
+protected:
 	
 };
