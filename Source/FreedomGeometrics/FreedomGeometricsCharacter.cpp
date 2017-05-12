@@ -148,8 +148,7 @@ void AFreedomGeometricsCharacter::Fire()
 	TimeSinceLastShotFired = 0;
 
 	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-	if(TimeSinceLastDebugMessage > 0.5) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
-	TimeSinceLastDebugMessage = 0;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
 	
 	//FVector CameraLook = FollowCamera->GetForwardVector();
 	//CameraLook.Z = 0;
@@ -198,7 +197,6 @@ void AFreedomGeometricsCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	TimeSinceLastDebugMessage += DeltaTime;
 	TimeSinceLastShotFired += DeltaTime;
 
 	if (IsFiring && TimeSinceLastShotFired >= FireDelaySeconds)

@@ -39,8 +39,6 @@ public:
 	float FireDelaySeconds = 0.15;
 	float TimeSinceLastShotFired = 0;
 
-	float TimeSinceLastDebugMessage = 0;
-
 	bool ReadyToSpawnProjectile = false;
 	FVector AimDirection;
 
