@@ -148,20 +148,36 @@ void AFreedomGeometricsCharacter::Fire()
 	TimeSinceLastShotFired = 0;
 
 	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
-
-	FHitResult HitResult;
-	FVector StartTrace = GetActorLocation();
-	FVector CameraLook = FollowCamera->GetForwardVector();
-	CameraLook.Z = 0;
-	FVector EndTrace = (CameraLook * 2000.f) + StartTrace;
+	if(TimeSinceLastDebugMessage > 0.5) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
+	TimeSinceLastDebugMessage = 0;
 	
-	DrawDebugLine(GetWorld(), StartTrace, EndTrace, FColor::Red, false, 2, 0, 2);
+	//FVector CameraLook = FollowCamera->GetForwardVector();
+	//CameraLook.Z = 0;
+	//CameraLook.Normalize();
+	//FVector StartTrace = GetActorLocation();
+	//FVector EndTrace = (CameraLook * 2000.f) + StartTrace;
+	//DrawDebugLine(GetWorld(), StartTrace, EndTrace, FColor::White, false, 2, 0, 1);
 
-	//FCollisionQueryParams QueryParams;
-	//QueryParams.AddIgnoredActor(this);
+	ReadyToSpawnProjectile = true;
+}
 
-	// look for actors hit by trace
+FVector AFreedomGeometricsCharacter::GetAimDirection()
+{
+	AimDirection = FollowCamera->GetForwardVector();
+	AimDirection.Z = 0;
+	AimDirection.Normalize();
+
+	return AimDirection;
+}
+
+bool AFreedomGeometricsCharacter::IsProjectileReady()
+{
+	return ReadyToSpawnProjectile;
+}
+
+void AFreedomGeometricsCharacter::SetReadyToSpawnProjectile(bool b)
+{
+	ReadyToSpawnProjectile = b;
 }
 
 void AFreedomGeometricsCharacter::UpdateSpinSpeed()
@@ -182,6 +198,7 @@ void AFreedomGeometricsCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	TimeSinceLastDebugMessage += DeltaTime;
 	TimeSinceLastShotFired += DeltaTime;
 
 	if (IsFiring && TimeSinceLastShotFired >= FireDelaySeconds)

@@ -39,6 +39,20 @@ public:
 	float FireDelaySeconds = 0.15;
 	float TimeSinceLastShotFired = 0;
 
+	float TimeSinceLastDebugMessage = 0;
+
+	bool ReadyToSpawnProjectile = false;
+	FVector AimDirection;
+
+	UFUNCTION(BlueprintPure, Category = "C++ Functions")
+	FVector GetAimDirection();
+
+	UFUNCTION(BlueprintPure, Category = "C++ Functions")
+	bool IsProjectileReady();
+
+	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
+	void SetReadyToSpawnProjectile(bool b);
+
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class USoundBase* FireSound;
