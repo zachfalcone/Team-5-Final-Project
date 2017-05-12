@@ -26,10 +26,17 @@ public:
 	float SpinAcceleration = 0.025;
 	float CurrentSpinSpeed = MinSpinSpeed;
 
+	FVector CurrentLocation;
+	FVector PreviousLocation;
+
 	UFUNCTION(BlueprintPure, Category = "C++ Functions")
 	float GetCurrentSpinSpeed();
 
+	UFUNCTION(BlueprintPure, Category = "C++ Functions")
+	FVector GetDeltaLocation();
+
 	void UpdateSpinSpeed();
+	void UpdateDeltaLocation();
 
 	void Fire();
 	void BeginFire();

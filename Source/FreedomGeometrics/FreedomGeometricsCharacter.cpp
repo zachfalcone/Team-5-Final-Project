@@ -42,6 +42,8 @@ AFreedomGeometricsCharacter::AFreedomGeometricsCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	CurrentLocation = GetActorLocation();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -188,9 +190,23 @@ void AFreedomGeometricsCharacter::UpdateSpinSpeed()
 	if (CurrentSpinSpeed < MinSpinSpeed) CurrentSpinSpeed = MinSpinSpeed;
 }
 
+void AFreedomGeometricsCharacter::UpdateDeltaLocation()
+{
+	PreviousLocation = CurrentLocation;
+	CurrentLocation = GetActorLocation();
+	//
+}
+
 float AFreedomGeometricsCharacter::GetCurrentSpinSpeed()
 {
 	return CurrentSpinSpeed;
+}
+
+FVector AFreedomGeometricsCharacter::GetDeltaLocation()
+{
+	//
+	FVector DeltaLoc = CurrentLocation - PreviousLocation;
+	return DeltaLoc;
 }
 
 void AFreedomGeometricsCharacter::Tick(float DeltaTime)
@@ -205,4 +221,5 @@ void AFreedomGeometricsCharacter::Tick(float DeltaTime)
 	}
 
 	UpdateSpinSpeed();
+	UpdateDeltaLocation();
 }
