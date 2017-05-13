@@ -150,14 +150,6 @@ void AFreedomGeometricsCharacter::Fire()
 	TimeSinceLastShotFired = 0;
 
 	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Spin speed: %f"), CurrentSpinSpeed));
-	
-	//FVector CameraLook = FollowCamera->GetForwardVector();
-	//CameraLook.Z = 0;
-	//CameraLook.Normalize();
-	//FVector StartTrace = GetActorLocation();
-	//FVector EndTrace = (CameraLook * 2000.f) + StartTrace;
-	//DrawDebugLine(GetWorld(), StartTrace, EndTrace, FColor::White, false, 2, 0, 1);
 
 	ReadyToSpawnProjectile = true;
 }
