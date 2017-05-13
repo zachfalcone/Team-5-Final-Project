@@ -70,6 +70,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	float BaseLookUpRate;
 
+    /** Health: */
+    int Health = 100;
+    
+    UFUNCTION(BlueprintPure, Category = "C++ Functions")
+    int getHealth();
+    
+    UFUNCTION(BlueprintCallable, Category = "C++ Functions")
+    void isHit(int damageValue);
 
 protected:
 

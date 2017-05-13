@@ -223,3 +223,19 @@ void AFreedomGeometricsCharacter::Tick(float DeltaTime)
 	UpdateSpinSpeed();
 	UpdateDeltaLocation();
 }
+
+/** Health */
+int AFreedomGeometricsCharacter::getHealth()
+{
+    return Health;
+}
+
+void AFreedomGeometricsCharacter::isHit(int damageValue)
+{
+    if (damageValue <= Health)
+    {
+        Health -= damageValue;
+    } else {
+        Health = 0;
+    }
+}
