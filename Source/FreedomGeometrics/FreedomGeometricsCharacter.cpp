@@ -224,10 +224,8 @@ int AFreedomGeometricsCharacter::getHealth()
 
 void AFreedomGeometricsCharacter::isHit(int damageValue)
 {
-    if (damageValue <= Health)
-    {
-        Health -= damageValue;
-    } else {
-        Health = 0;
-    }
+	Health -= damageValue;
+	if (Health < 0) Health = 0;
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
 }

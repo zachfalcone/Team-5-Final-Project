@@ -34,26 +34,15 @@ void AFreedomGeometricsEnemy::SetupPlayerInputComponent(UInputComponent* PlayerI
 
 }
 
-void AFreedomGeometricsEnemy::AttackPlayer()
+void AFreedomGeometricsEnemy::AttackedPlayer()
 {
 	TimeSinceLastAttack = 0;
-}
-
-bool AFreedomGeometricsEnemy::IsInRangeOfPlayer()
-{
-	return InRangeOfPlayer;
 }
 
 bool AFreedomGeometricsEnemy::IsReadyToAttack()
 {
 	return TimeSinceLastAttack > SecondsPerAttack;
 }
-
-void AFreedomGeometricsEnemy::SetInRangeOfPlayer(bool b)
-{
-	InRangeOfPlayer = b;
-}
-
 int AFreedomGeometricsEnemy::getHealth()
 {
 	return Health;

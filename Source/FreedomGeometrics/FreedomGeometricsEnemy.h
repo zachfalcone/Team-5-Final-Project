@@ -26,22 +26,15 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-	void AttackPlayer();
-
-	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-	bool IsInRangeOfPlayer();
+	void AttackedPlayer();
 
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
 	bool IsReadyToAttack();
-
-	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-	void SetInRangeOfPlayer(bool b);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "C++ Variables")
 	float SecondsPerAttack = 1;
 
 	float TimeSinceLastAttack = 0;
-	bool InRangeOfPlayer = false;
 
 	int Health = 100;
 
