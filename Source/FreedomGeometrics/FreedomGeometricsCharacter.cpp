@@ -149,8 +149,6 @@ void AFreedomGeometricsCharacter::Fire()
 {
 	TimeSinceLastShotFired = 0;
 
-	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-
 	ReadyToSpawnProjectile = true;
 }
 
@@ -222,10 +220,23 @@ int AFreedomGeometricsCharacter::getHealth()
     return Health;
 }
 
-void AFreedomGeometricsCharacter::isHit(int damageValue)
+int AFreedomGeometricsCharacter::getMaxHealth()
 {
-	Health -= damageValue;
+	return MaxHealth;
+}
+
+void AFreedomGeometricsCharacter::addHealth(float val)
+{
+	Health += val;
+
+	if (Health > MaxHealth) Health = MaxHealth;
 	if (Health < 0) Health = 0;
 
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
+}
+
+void AFreedomGeometricsCharacter::isHit(int damageValue)
+{
+	addHealth(-damageValue);
+
 }

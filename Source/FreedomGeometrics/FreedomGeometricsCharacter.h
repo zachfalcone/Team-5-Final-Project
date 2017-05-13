@@ -58,10 +58,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
 	void SetReadyToSpawnProjectile(bool b);
 
-	/** Sound to play each time we fire */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class USoundBase* FireSound;
-
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	float BaseTurnRate;
@@ -72,9 +68,16 @@ public:
 
     /** Health: */
     int Health = 100;
+	int MaxHealth = 100;
     
     UFUNCTION(BlueprintPure, Category = "C++ Functions")
     int getHealth();
+
+	UFUNCTION(BlueprintPure, Category = "C++ Functions")
+	int getMaxHealth();
+
+	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
+	void addHealth(float val);
     
     UFUNCTION(BlueprintCallable, Category = "C++ Functions")
     void isHit(int damageValue);

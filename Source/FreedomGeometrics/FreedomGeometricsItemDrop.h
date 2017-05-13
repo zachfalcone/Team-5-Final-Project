@@ -22,6 +22,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+	float RotationSpeed = 0.5;
+	float OscillateRange = 10;
+
+private:
+	FVector StartLocation;
+
+	float AnimationCount = 0;
+	float AnimationSpeed = 100;
+	int SinOffset = 0;
 };

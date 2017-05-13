@@ -17,6 +17,19 @@ void AFreedomGeometricsItemDrop::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	StartLocation = GetActorLocation();
+
+	int temp_x = StartLocation.X / 3;
+	int temp_y = StartLocation.Y / 3;
+
+	temp_x %= 360;
+	temp_y %= 360;
+
+	SinOffset = temp_x + temp_y;
+
+	FRotator ActorRotation = GetActorRotation();
+	ActorRotation.Yaw += SinOffset;
+	SetActorRotation(ActorRotation);
 }
 
 // Called every frame
@@ -24,5 +37,21 @@ void AFreedomGeometricsItemDrop::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	AnimationCount += DeltaTime * AnimationSpeed;
+
+	if (AnimationCount > 360) AnimationCount -= 360;
+
+	int WaveFunction = AnimationCount + SinOffset;
+	float SinWave = FMath::Sin(FMath::DegreesToRadians(WaveFunction));
+
+	// ROTATION
+	FRotator ActorRotation = GetActorRotation();
+	ActorRotation.Yaw += RotationSpeed;
+	SetActorRotation(ActorRotation);
+
+	// OSCILLATION
+	FVector NewLocation = StartLocation;
+	NewLocation.Z += SinWave * OscillateRange;
+	SetActorLocation(NewLocation);
 }
 

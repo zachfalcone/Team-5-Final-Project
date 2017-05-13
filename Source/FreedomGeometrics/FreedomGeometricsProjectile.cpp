@@ -31,9 +31,6 @@ AFreedomGeometricsProjectile::AFreedomGeometricsProjectile()
 	ProjectileMovement->MaxSpeed = 3000.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = true;
-
-	// Die after 3 seconds by default
-	InitialLifeSpan = 10.0f;
 }
 
 void AFreedomGeometricsProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
