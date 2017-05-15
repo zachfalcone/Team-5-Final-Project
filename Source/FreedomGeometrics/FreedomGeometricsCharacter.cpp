@@ -225,7 +225,7 @@ int AFreedomGeometricsCharacter::getMaxHealth()
 	return MaxHealth;
 }
 
-void AFreedomGeometricsCharacter::addHealth(float val)
+void AFreedomGeometricsCharacter::addHealth(int val)
 {
 	Health += val;
 

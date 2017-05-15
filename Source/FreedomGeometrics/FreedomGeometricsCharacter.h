@@ -77,7 +77,7 @@ public:
 	int getMaxHealth();
 
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-	void addHealth(float val);
+	void addHealth(int val);
     
     UFUNCTION(BlueprintCallable, Category = "C++ Functions")
     void isHit(int damageValue);
