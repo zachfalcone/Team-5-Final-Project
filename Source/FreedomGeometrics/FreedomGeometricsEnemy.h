@@ -43,4 +43,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
 	void isHit(int damageValue);
+    
+    UPROPERTY(VisibleAnywhere)
+    UPointLightComponent* EnemyLight;
 };

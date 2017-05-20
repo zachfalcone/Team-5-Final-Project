@@ -10,6 +10,8 @@ AFreedomGeometricsEnemy::AFreedomGeometricsEnemy()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+    // Get EnemyLight
+    EnemyLight = CreateDefaultSubobject<UPointLightComponent>(FName("PointLightE"));
 }
 
 // Called when the game starts or when spawned
@@ -53,4 +55,20 @@ void AFreedomGeometricsEnemy::isHit(int damageValue)
 	Health -= damageValue;
 	
 	if(Health < 0) Health = 0;
+    
+    float healthRatio = (float)Health / (float)100;
+    
+    if (healthRatio > 1) healthRatio = 1;
+    else if (healthRatio < 0) healthRatio = 0;
+    
+    // Make health color
+    FLinearColor HealthColor;
+    HealthColor.R = (1 - healthRatio);
+    HealthColor.G = healthRatio;
+    HealthColor.B = 0.0f;
+    HealthColor.A = 1;
+
+    if (EnemyLight) {
+        EnemyLight->SetLightColor(HealthColor, 0);
+    }
 }
