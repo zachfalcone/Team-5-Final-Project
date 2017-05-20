@@ -81,6 +81,12 @@ public:
     
     UFUNCTION(BlueprintCallable, Category = "C++ Functions")
     void isHit(int damageValue);
+    
+    UPROPERTY(VisibleAnywhere)
+    UStaticMeshComponent* HealthMesh;
+    
+    UPROPERTY(VisibleAnywhere)
+    UPointLightComponent* PlayerLight;
 
 protected:
 

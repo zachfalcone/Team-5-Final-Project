@@ -9,6 +9,10 @@
 AFreedomGeometricsCharacter::AFreedomGeometricsCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
+    
+    // Get PlayerMesh & PlayerLight
+    HealthMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerMesh"));
+    PlayerLight = CreateDefaultSubobject<UPointLightComponent>(FName("PointLight"));
 
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -232,6 +236,31 @@ void AFreedomGeometricsCharacter::addHealth(int val)
 	if (Health > MaxHealth) Health = MaxHealth;
 	if (Health < 0) Health = 0;
 
+    UMaterialInstanceDynamic* HealthMaterial = HealthMesh->CreateAndSetMaterialInstanceDynamic(0);
+    
+    float healthRatio = (float)Health / (float)MaxHealth;
+    
+    if (healthRatio > 1) healthRatio = 1;
+    else if (healthRatio < 0) healthRatio = 0;
+    
+    // Make health color
+    FLinearColor HealthColor;
+    HealthColor.R = (1 - healthRatio);
+    HealthColor.G = healthRatio;
+    HealthColor.B = 0.0f;
+    HealthColor.A = 1;
+    
+    if (HealthMaterial) {
+        HealthMaterial->SetVectorParameterValue(FName("ColorParam"), HealthColor);
+        HealthMaterial->SetScalarParameterValue(FName("Metallic"), 0.5f);
+        HealthMaterial->SetScalarParameterValue(FName("Specular"), 0);
+        HealthMaterial->SetScalarParameterValue(FName("Roughness"), 0);
+    }
+
+    if (PlayerLight) {
+        PlayerLight->SetLightColor(HealthColor, 0);
+    }
+    
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
 }
 
