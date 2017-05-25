@@ -219,17 +219,17 @@ void AFreedomGeometricsCharacter::Tick(float DeltaTime)
 }
 
 /** Health */
-int AFreedomGeometricsCharacter::getHealth()
+float AFreedomGeometricsCharacter::getHealth()
 {
     return Health;
 }
 
-int AFreedomGeometricsCharacter::getMaxHealth()
+float AFreedomGeometricsCharacter::getMaxHealth()
 {
 	return MaxHealth;
 }
 
-void AFreedomGeometricsCharacter::addHealth(int val)
+void AFreedomGeometricsCharacter::addHealth(float val)
 {
 	Health += val;
 
@@ -238,7 +238,7 @@ void AFreedomGeometricsCharacter::addHealth(int val)
 
     UMaterialInstanceDynamic* HealthMaterial = HealthMesh->CreateAndSetMaterialInstanceDynamic(0);
     
-    float healthRatio = (float)Health / (float)MaxHealth;
+    float healthRatio = Health / MaxHealth;
     
     if (healthRatio > 1) healthRatio = 1;
     else if (healthRatio < 0) healthRatio = 0;
@@ -260,12 +260,9 @@ void AFreedomGeometricsCharacter::addHealth(int val)
     if (PlayerLight) {
         PlayerLight->SetLightColor(HealthColor, 0);
     }
-    
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
 }
 
-void AFreedomGeometricsCharacter::isHit(int damageValue)
+void AFreedomGeometricsCharacter::isHit(float damageValue)
 {
 	addHealth(-damageValue);
-
 }

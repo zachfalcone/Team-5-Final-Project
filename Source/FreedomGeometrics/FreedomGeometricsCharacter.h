@@ -67,20 +67,20 @@ public:
 	float BaseLookUpRate;
 
     /** Health: */
-    int Health = 100;
-	int MaxHealth = 100;
+    float Health = 100;
+	float MaxHealth = 100;
     
     UFUNCTION(BlueprintPure, Category = "C++ Functions")
-    int getHealth();
+	float getHealth();
 
 	UFUNCTION(BlueprintPure, Category = "C++ Functions")
-	int getMaxHealth();
+	float getMaxHealth();
 
 	UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-	void addHealth(int val);
+	void addHealth(float val);
     
     UFUNCTION(BlueprintCallable, Category = "C++ Functions")
-    void isHit(int damageValue);
+    void isHit(float damageValue);
     
     UPROPERTY(VisibleAnywhere)
     UStaticMeshComponent* HealthMesh;
