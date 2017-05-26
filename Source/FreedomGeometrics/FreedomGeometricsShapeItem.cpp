@@ -19,7 +19,7 @@ void AFreedomGeometricsShapeItem::OnOverlapBegin(AActor* MyOverlappedActor, AAct
 {
     // Set static mesh of player to static mash of actor for a constant amount of time
     
-    Destroy();
+    // Destroy();
 }
 
 // Called when the game starts or when spawned
