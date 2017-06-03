@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "GameFramework/Actor.h"
+#include "GameFramework/Pawn.h"
 #include "FreedomGeometricsRivalBox.generated.h"
 
 UCLASS()
-class FREEDOMGEOMETRICS_API AFreedomGeometricsRivalBox : public AActor
+class FREEDOMGEOMETRICS_API AFreedomGeometricsRivalBox : public APawn
 {
 	GENERATED_BODY()
 	
@@ -31,6 +31,10 @@ public:
     float HitRadius = 500;
     
     // No health because box is indestructable
+    
+    // AI
+    UPROPERTY(EditAnywhere, Category = Behavior)
+    class UBehaviorTree* BoxBehavior;
 
 protected:
 	// Called when the game starts or when spawned
