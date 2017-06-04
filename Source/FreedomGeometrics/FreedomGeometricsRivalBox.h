@@ -22,6 +22,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Attacking)
     AFreedomGeometricsRivalBox* Box;
     
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Attacking)
     float FireDelaySeconds = 1.0;
     
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Attacking)
