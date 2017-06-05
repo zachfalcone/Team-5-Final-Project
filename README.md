@@ -1,4 +1,5 @@
-# Freedom Geometrics
+<!--# Freedom Geometrics-->
+# <img src="./Images/text.svg" />
 
 <ul>
 <h3> Download </h3>
@@ -49,8 +50,9 @@
 
 <ul>
 <h3> Items </h3>
-<li> Health - Increase health of character (+10 hp). </li>
-<li> Shapes - Changes the shape of the character and makes the character more resistant to hazards. </li>
+<li> Health - Green; increases health of character (+10 hp). </li>
+<li> Time - Blue; increases level time. </li>
+<li> Shapes - Silver; changes the shape of the character and makes the character more resistant to hazards. </li>
 </ul>
 
 <ul>
