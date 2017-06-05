@@ -39,6 +39,7 @@
 <ul>
 <h3> Enemies </h3>
 <li> Enemies follow character and attack (-10 hp). </li>
+<li> When an enemy is destroyed, it can drop a health item or time item. Enemies with health items arbitrarily drop items. </li>
 <li> Rival boxes face character and shoot projectiles when character is in range (-10 hp). </li>
 </ul>
 
