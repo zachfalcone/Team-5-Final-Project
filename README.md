@@ -10,7 +10,7 @@
 
 <ul>
 <h3> Levels </h3>
-<li> Portals - Shows unlocked levels. Enter a portal to be teleported to a level. </li>
+<li> Portals - Shows unlocked levels. Enter a portal to be teleported to a level. Press '=' to go to main menu.</li>
 <li> Level 1 - Easy introductory level. </li>
 <li> Level 2 - [Add description] </li>
 <li> Level 3 - [Add description] </li>
@@ -58,6 +58,6 @@
 
 <ul>
 <h3> Objects </h3>
-<li> Doors - when character steps on door trigger, door opens. </li>
+<li> Doors - When character steps on door trigger, door opens. </li>
 <li> Particles - Unlocks the next level and sends the character to Portals. </li>
 </ul>
