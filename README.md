@@ -1,5 +1,5 @@
 <!--# Freedom Geometrics-->
-# <img src="./Images/text.svg" />
+<img src="https://cdn.rawgit.com/CSE441/Team-5-Final-Project/master/Images/text.svg" >
 
 <ul>
 <h3> Download </h3>
