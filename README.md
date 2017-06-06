@@ -1,5 +1,5 @@
 <!--# Freedom Geometrics-->
-<img src="https://cdn.rawgit.com/CSE441/Team-5-Final-Project/master/Images/text.svg" >
+<a href="https://github.com/CSE441/Team-5-Final-Project" > <img src="https://cdn.rawgit.com/CSE441/Team-5-Final-Project/master/Images/text.svg" > </a>
 
 <ul>
 <h3> Download </h3>
