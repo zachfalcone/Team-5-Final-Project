@@ -10,7 +10,7 @@
 
 <ul>
 <h3> Levels </h3>
-<li> Portals - Shows unlocked levels. Enter a portal to be teleported to a level. Press '=' to go to main menu.</li>
+<li> Portals - Shows unlocked levels. Enter a portal to be teleported to a level.</li>
 <li> Level 1 - Easy introductory level. </li>
 <li> Level 2 - [Add description] </li>
 <li> Level 3 - [Add description] </li>
@@ -21,6 +21,8 @@
 <li> Left click to shoot projectiles. </li>
 <li> ASDW keys to move (A-left S-backward D-right W-forward).</li>
 <li> Space key to jump. </li>
+<li> Press 'Esc' or '=' to exit the level. </li>
+<li> Press '1' to unlock the next level. </li>
 </ul>
 
 <ul>
