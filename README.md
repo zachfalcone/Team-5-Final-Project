@@ -3,22 +3,26 @@
 
 <ul>
 <h3> Download </h3>
-<li> Windows <br> <a href=""> [link when posted] </a> </li>
+<li> Windows (64-bit) <br> <a href="https://drive.google.com/uc?id=0By-s6OvelhECdzMyTDQ2RFJwWFE&export=download"> Download FreedomGeometricsWin64.zip </a> </li>
 <br>
-<li> Mac <br> <a href=""> [link when posted] </a> </li>
+<li> Mac <br> <a href="https://drive.google.com/uc?id=0By-s6OvelhECYUM0MHRSdXZMTVE&export=download"> Download FreedomGeometricsMac.zip </a> </li>
 </ul>
 
 <ul>
 <h3> Levels </h3>
 <li> Portals - Shows unlocked levels. Enter a portal to be teleported to a level.</li>
 <li> Level 1 - Easy introductory level. </li>
-<li> Level 2 - [Add description] </li>
-<li> Level 3 - [Add description] </li>
+<li> Level 2 - Navigate on ring platforms and destroy enemies to avoid running out of time. </li>
+<li> Level 3 - Navigate through a dungeon.</li>
+<li> Level 4 - Navigate through a maze. </li>
+<li> Level 5 - Find the hidden door trigger. </li>
+<li> Level 6 - Extra level. Make it past enemies & hazards. </li>
 </ul>
 
 <ul>
 <h3> Navigation </h3>
 <li> Left click to shoot projectiles. </li>
+<li> Mouse moves the camera/aims. </li>
 <li> ASDW keys to move (A-left S-backward D-right W-forward).</li>
 <li> Space key to jump. </li>
 <li> Press 'Esc' or '=' to exit the level. </li>
