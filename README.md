@@ -1,11 +1,11 @@
 <!--# Freedom Geometrics-->
-<a href="https://github.com/CSE441/Team-5-Final-Project" > <img src="https://cdn.rawgit.com/CSE441/Team-5-Final-Project/master/Images/text.svg" > </a>
+<a href="https://github.com/zachfalcone/Team-5-Final-Project" > <img src="https://cdn.rawgit.com/zachfalcone/Team-5-Final-Project/master/Images/text.svg" > </a>
 
 <ul>
 <h3> Download </h3>
-<li> Windows (64-bit) <br> <a href="https://drive.google.com/uc?id=0By-s6OvelhECdzMyTDQ2RFJwWFE&export=download"> Download FreedomGeometricsWin64.zip </a> </li>
+<li> Windows (64-bit) <br> <a href="https://github.com/zachfalcone/Team-5-Final-Project/releases/download/v1.0/FreedomGeometricsWin64.zip"> Download FreedomGeometricsWin64.zip </a> </li>
 <br>
-<li> Mac <br> <a href="https://drive.google.com/uc?id=0By-s6OvelhECYUM0MHRSdXZMTVE&export=download"> Download FreedomGeometricsMac.zip </a> </li>
+<li> Mac <br> <a href="https://github.com/zachfalcone/Team-5-Final-Project/releases/download/v1.0/FreedomGeometricsMac.zip"> Download FreedomGeometricsMac.zip </a> </li>
 </ul>
 
 <ul>
